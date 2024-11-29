@@ -3,7 +3,7 @@
 **Open a terminal in the main directory and run **
 
 
-npm start
+npm install
 
 npm install cookie-parser
 
