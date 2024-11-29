@@ -7,6 +7,7 @@
 var app = require('./config/app');
 var debug = require('debug')('finalproject:server');
 var http = require('http');
+var registerRouter = require('./routes/register');
 
 /**
  * Get port from environment and store in Express.
@@ -28,6 +29,11 @@ var server = http.createServer(app);
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
+
+/**
+ * register router
+ */
+app.use('/', registerRouter);
 
 /**
  * Normalize a port into a number, string, or false.
