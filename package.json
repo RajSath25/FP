@@ -1,0 +1,11 @@
+{
+  "name": "project_2024",
+  "version": "1.0.0",
+  "description": "This is for final project fo INFR3120U",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Raj Sathiyakumar, Alex Unippillil, Saajtith Gnanakanthan",
+  "license": "ISC"
+}

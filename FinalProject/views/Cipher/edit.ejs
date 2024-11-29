@@ -1,0 +1,49 @@
+<%- include ../Partials/header.ejs %>
+<%- include ../Partials/main_nav.ejs %>
+
+<div class = "container">
+    <div class = "row">
+        <div class = "offset-md-3 col-md-6">
+            <h1><%= title %></h1>
+            <form class = "form" method="POST">
+                <div class="form-group">
+                    <label for="firstNameTextField">First Name</label>
+                    <input type="text" class="form-control" id="firstNameTextField" 
+                    placeholder="Enter first name" name="firstname" value = "<%= cipher.firstname %>" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="lastNameTextField">Last Name</label>
+                    <input type="text" class="form-control" id="lastNameTextField" 
+                    placeholder="Enter last name" name="lastname" value = "<%= cipher.lastname %>" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="plaintextTextField">Plaintext</label>
+                    <input type="text" class="form-control" id="plaintextTextField" 
+                    placeholder="Enter plaintext" name="plaintext" value = "<%= cipher.plaintext %>" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="keyTextField">Key</label>
+                    <input type="text" class="form-control" id="keyTextField" 
+                    placeholder="Enter encryption key" name="key" value = "<%= cipher.key %>" required>
+                </div>
+
+        
+
+                <button class="btn btn-primary" type="submit">
+                    <i class = "fa-solid fa-edit"></i>
+                    Submit</button>
+                
+                <a href="/cipher" class = "btn btn-warning">
+                    <i class = "fas fa-undo"></i> Cancel</a>
+
+            </form> 
+
+        </div>
+    </div>
+</div>
+
+<%- include ../Partials/bottom_nav.ejs %>  
+<%- include ../Partials/footer.ejs %>
