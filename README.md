@@ -1,8 +1,8 @@
 ﻿# INFR3120-Project2024
 
 NFR3120 – Web and Scripting Programming
-Project Part 1 – First Release
-First Release
+Project Part 2 – Second Release
+Second Release
 Overview:
 
 • Your site must include a Landing Page that is appropriate for the type of Web
@@ -18,6 +18,6 @@ site you have selected to build
 and Delete) operations on the type of objects and data relevant to the site
 you have selected to build.
 
-• Authentication is not required at this stage of development.
+• Authentication is required at this stage of development.
 
 • Your site does not have to be pretty at this stage, just functional.
