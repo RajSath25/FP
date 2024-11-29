@@ -1,0 +1,92 @@
+<%- include ../Partials/header.ejs %>
+<%- include ../Partials/main_nav.ejs %>
+
+<div class = "container">
+    <div class = "row">
+        <div class = "offset-md-3 col-md-6">
+            <h1><%= title %></h1>
+            <form class = "form" method="POST">
+                <div class="form-group">
+                    <label for="firstNameTextField">First Name</label>
+                    <input type="text" class="form-control" id="firstNameTextField" 
+                    placeholder="Enter first name" name="firstname" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="lastNameTextField">Last Name</label>
+                    <input type="text" class="form-control" id="lastNameTextField" 
+                    placeholder="Enter last name" name="lastname" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="plaintextTextField">Plaintext</label>
+                    <input type="text" class="form-control" id="plaintextTextField" 
+                    placeholder="Enter plaintext" name="plaintext"required>
+                </div>
+
+                <div class="form-group">
+                    <label for="keyTextField">Key</label>
+                    <input type="text" class="form-control" id="keyTextField" 
+                    placeholder="Enter encryption key" name="key" required>
+                </div>
+                <!--
+                <div class="form-group">
+                    <label for="cipherTextField">Cipher Text</label>
+                    <input type="text" class="form-control" id="ciphertextTextField" 
+                     name="encryption"  required>
+                    <button class = "btn btn-primary" type = "button" id = "cipherButton">Cipher</button>
+                </div> -->
+
+        
+
+                <button class="btn btn-primary" type="submit">
+                    <i class = "fa-solid fa-edit"></i>
+                    Submit</button>
+                
+                <a href="/cipher" class = "btn btn-warning">
+                    <i class = "fas fa-undo"></i> Cancel</a>
+
+            </form> 
+
+        </div>
+    </div>
+</div>
+<script>
+    const inputs = document.getElementById("ciphertextTextField")
+    let plaintext=document.getElementById("plaintextTextField")
+    let key = document.getElementById("keyTextField")
+    const buttons = document.getElementById("cipherButton")
+
+    
+    function caesarCipher2(plainText, key) 
+    {  
+        let result = ""; 
+        for (let i = 0; i < plainText.length; i++) {    
+        let charCode = plainText.charCodeAt(i);
+        console.log(charCode)    
+        if (charCode >= 65 && charCode <=  97) 
+        {      
+            result += String.fromCharCode((charCode - 65 + key) % 26 + 65);    
+        } 
+        else if (charCode >= 97 && charCode <= 122) 
+        { 
+            result += String.fromCharCode((charCode - 97) + parseInt(key) % 26 + 97)
+            console.log(result)      
+        } 
+        else 
+        {      
+            result += plainText[i];     
+        }  
+        
+        }   
+        return result;
+    }
+    function display(){
+        inputs.innerHTML = caesarCipher2(plaintext,key)
+    }
+
+    buttons.addEventListener("click", display());
+
+</script>
+<%- include ../Partials/bottom_nav.ejs %>  
+<%- include ../Partials/footer.ejs %>

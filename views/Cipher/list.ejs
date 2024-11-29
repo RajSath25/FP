@@ -1,0 +1,98 @@
+<%- include ../Partials/header.ejs %>
+<%- include ../Partials/main_nav.ejs %>
+
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-3 col-md-6">
+                <h1><%= title %></h1>
+                <br>
+                <a href="/cipher/add" class="btn btn-primary" role="button">
+                    <i class="fas fa-plus"></i> Add Cipher
+                </a>
+                <table class= "table table-bordered table-striped table-hover" id = "cipherTable">
+                    <tr>
+                        <th class="text-center">First Name</th>
+                        <th class="text-center">Last Name</th>
+                        <th class="text-center">Plaintext</th>
+                        <th class="text-center">Key</th>
+                        <th class="text-center">Ciphertext</th>
+                        
+                    </tr>
+                    <% for(let count=0; count<cipherList.length; count++){ %>
+                        <tr>
+                            <td class="text-center"><%= cipherList[count].firstname %></td>
+                            <td class="text-center"><%= cipherList[count].lastname %></td>
+                            <td class="text-center"><%= cipherList[count].plaintext %></td>
+                            <td class="text-center"><%= cipherList[count].key %></td>
+                            <!--<td class="text-center"><%= cipherList[count].encryption %></td>-->
+
+                            <td class="text-center col-1">
+                                <a href="/cipher/edit/<%= cipherList[count]._id%>"
+                                class="btn btn-primary btn-sm">
+                                <i class="fas fa-pencil-alt"></i>Edit</a></td>
+
+                            <td class="text-center col-1">
+                                <a href="/cipher/delete/<%= cipherList[count]._id %>"
+                                class="btn btn-danger btn-sm">
+                                <i class="fas fa-trash-alt"></i>Delete</a></td>
+                        </tr>
+                    <% } %>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script>
+    
+    function caesarCipher2(plainText, key) 
+    {  
+        let result = ""; 
+        for (let i = 0; i < plainText.length; i++) {    
+        let charCode = plainText.charCodeAt(i);
+        console.log(charCode)    
+        if (charCode >= 65 && charCode <  97) 
+        {      
+            result += String.fromCharCode((charCode - 65 + key) % 26 + 65);    
+        } 
+        else if (charCode >= 97 && charCode < 122) 
+        { 
+            result += String.fromCharCode((charCode - 97) + parseInt(key) % 26 + 97)
+            console.log(result)      
+        } 
+        else if(charCode == 122)
+        {
+            result += String.fromCharCode((97))
+        }
+        else 
+        {      
+            result += plainText[i];     
+        }  
+        
+        }   
+        return result;
+    }
+
+
+    const cipherTable = document.getElementById("cipherTable");
+
+    for (let i = 1; i < cipherTable.rows.length; i++){
+        let rows = cipherTable.rows[i];
+
+
+        let plaintext = rows.cells[2].innerText;
+        let key = parseInt(rows.cells[3].innerText);
+
+        let cipherText = caesarCipher2(plaintext,key)
+        
+        let cipherTextCell = rows.insertCell(4);
+        cipherTextCell.innerText = cipherText;
+    
+    }
+</script>
+
+
+<%- include ../Partials/bottom_nav.ejs %>  
+    
+<%- include ../Partials/footer.ejs %>

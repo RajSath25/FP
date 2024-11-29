@@ -1,0 +1,35 @@
+<%- include Partials/header.ejs %>
+<%- include Partials/main_nav.ejs %>
+
+
+  <h1><%= title %></h1>
+  <p>Welcome to <%= title %></p>
+
+<%- include Partials/bottom_nav.ejs %>  
+    <!--
+    <button onclick="caesarCipher('hello', 3)">Cipher</button>
+    <h1 id = "cipher"></h1>
+    <script>
+      function caesarCipher(str, shift) 
+  {  
+    let result = "";  
+    for (let i = 0; i < str.length; i++) {    
+      let charCode = str.charCodeAt(i);    
+      if (charCode >= 65 && charCode <=  90) 
+      {      
+        result += String.fromCharCode((charCode - 65 + shift) % 26 + 65);    
+      } 
+      else if (charCode >= 97 && charCode <= 122) 
+      {      result += String.fromCharCode((charCode - 97 + shift) % 26 + 97);       
+      } 
+      else 
+      {      
+        result += str[i];     
+      }  
+      
+    }   
+    document.getElementById("cipher").innerHTML = result;
+  }
+  
+    </script>-->
+<%- include Partials/footer.ejs %>
