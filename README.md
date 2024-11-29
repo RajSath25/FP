@@ -2,8 +2,11 @@
 
 **Open a terminal in the main directory and run **
 
+
 npm start
+
 npm install cookie-parser
+
 npm start
 
 
