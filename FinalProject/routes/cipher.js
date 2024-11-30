@@ -8,7 +8,9 @@ let cipher = require("../model/cipher");
 router.get('/', async(req, res, next) => {
     try{
         const Cipher = await cipher.find()
-        res.render("Cipher/list", {title: "Cipher List", cipherList: Cipher});
+        res.render("Cipher/list", {title: "Cipher List", cipherList: Cipher,
+            displayName: req.user ? req.user.displayName:""
+        });
     }
     catch (err)
     {

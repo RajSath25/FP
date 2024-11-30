@@ -6,26 +6,36 @@
         <div class="row">
             <div class="col-md-offset-3 col-md-6">
                 <h1><%= title %></h1>
-                <br>
-                <a href="/cipher/add" class="btn btn-primary" role="button">
-                    <i class="fas fa-plus"></i> Add Cipher
-                </a>
+                <% if (typeof displayName == "string" && displayName) { %>
+                    <a href="/cipher/add" class="btn btn-primary" role="button">
+                        <i class="fas fa-plus"></i> Add Cipher
+                    </a>
+                <% } %>
                 <table class= "table table-bordered table-striped table-hover" id = "cipherTable">
                     <tr>
+                    <% if (typeof displayName == "string" && displayName) { %>
                         <th class="text-center">First Name</th>
                         <th class="text-center">Last Name</th>
                         <th class="text-center">Plaintext</th>
                         <th class="text-center">Key</th>
                         <th class="text-center">Ciphertext</th>
-                        
+                        <th class="text-center"></th>
+                        <th class="text-center"></th>
+                    <% } else { %> 
+                        <th class="text-center">First Name</th>
+                        <th class="text-center">Last Name</th>
+                        <th class="text-center">Plaintext</th>
+                        <th class="text-center">Key</th>
+                        <th class="text-center">Ciphertext</th>
+                    <% } %>  
                     </tr>
                     <% for(let count=0; count<cipherList.length; count++){ %>
                         <tr>
+                        <% if (typeof displayName == "string" && displayName) { %>
                             <td class="text-center"><%= cipherList[count].firstname %></td>
                             <td class="text-center"><%= cipherList[count].lastname %></td>
                             <td class="text-center"><%= cipherList[count].plaintext %></td>
                             <td class="text-center"><%= cipherList[count].key %></td>
-                            <!--<td class="text-center"><%= cipherList[count].encryption %></td>-->
 
                             <td class="text-center col-1">
                                 <a href="/cipher/edit/<%= cipherList[count]._id%>"
@@ -36,6 +46,12 @@
                                 <a href="/cipher/delete/<%= cipherList[count]._id %>"
                                 class="btn btn-danger btn-sm">
                                 <i class="fas fa-trash-alt"></i>Delete</a></td>
+                        <% } else { %> 
+                            <td class="text-center"><%= cipherList[count].firstname %></td>
+                            <td class="text-center"><%= cipherList[count].lastname %></td>
+                            <td class="text-center"><%= cipherList[count].plaintext %></td>
+                            <td class="text-center"><%= cipherList[count].key %></td>
+                        <% } %> 
                         </tr>
                     <% } %>
                 </table>

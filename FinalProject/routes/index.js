@@ -7,11 +7,16 @@ let User = userModel.User;
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render("index", {title: "Home"});
+  res.render("index", {title: "Home",
+    displayName: req.user ? req.user.displayName:""
+  });
 });
 
 router.get('/home', function(req, res, next) {
-  res.render("index", {title: "Home"});
+  res.render("index", {title: "Home",
+    displayName: req.user ? req.user.displayName:""
+  });
+  
 });
 
 router.get("/login", function(req,res,next){
@@ -20,7 +25,7 @@ router.get("/login", function(req,res,next){
     res.render("Authentication/login", {
       title:"Login",
       message: req.flash("loginMessage"),
-      displayName:req.user ? req.user.displayName:""
+      displayName: req.user ? req.user.displayName:""
     })
   }
   else {
@@ -36,8 +41,8 @@ router.post("/login", function(req,res,next){
     }
     if (!user)
     {
-      req.flash("loginMessage", "Authentication Error");
-      res.redirect("/login")
+      req.flash("loginMessage", "AuthenticationError");
+      return res.redirect("/login")
     }
     req.login(user, (err)=>{
       if (err)
@@ -48,6 +53,51 @@ router.post("/login", function(req,res,next){
     })
   }) (req,res,next)
 })
+
+router.get("/register", function(req,res,next){
+  if (!req.user)
+  {
+    res.render("Authentication/register", {
+      title:"Register",
+      message:req.flash("registerMessage"),
+      displayName: req.user ? req.user.displayName: ""
+    })
+  }
+  else {
+    return res.redirect("/")
+  }
+})
+// POST register page
+router.post('/register', function(req, res, next) {
+  let newUser = new User({
+    username: req.body.username,
+    //password: req.body.password,
+    email: req.body.email,
+    displayName: req.body.displayName
+  });
+
+  User.register(newUser, req.body.password, (err) => {
+    if (err) {
+      console.log('Error: inserted New User');
+      if (err.name == 'UserExistsError') {
+        req.flash('registerMessage', 'Error: Username already taken!');
+        console.log('Error: User name taken!');
+      }
+      return res.render('Authentication/register', {
+        title: 'Register',
+        message: req.flash('registerMessage'),
+        displayName: req.user ? req.user.displayName : ''
+      });
+    } else {
+
+
+      return passport.authenticate('local')(req, res, () => {
+        res.redirect('/');
+      });
+    }
+  });
+})
+
 
 router.get("/logout", (req,res,next)=>{
   req.logout(function(err){
