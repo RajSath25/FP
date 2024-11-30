@@ -22,6 +22,7 @@ mongoose.connect(DB.URI,{useNewURIParser:true,useUnifiedTopology:true})
 let indexRouter = require('../routes/index');
 let usersRouter = require('../routes/users');
 let cipherRouter = require("../routes/cipher");
+let registerRouter = require('../routes/register')
 
 let app = express();
 //let cors = require("cors");
@@ -62,6 +63,7 @@ app.use(express.static(path.join(__dirname, '../node_modules')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use("/cipher", cipherRouter);
+app.use('/register', registerRouter); 
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

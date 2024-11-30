@@ -1,5 +1,16 @@
 ﻿# INFR3120-Project2024
 
+**Open a terminal in the main directory and run **
+
+
+npm install
+
+npm install cookie-parser
+
+npm start
+
+
+
 NFR3120 – Web and Scripting Programming
 Project Part 2 – Second Release
 Second Release
