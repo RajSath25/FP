@@ -49,6 +49,18 @@ router.post("/login", function(req,res,next){
   }) (req,res,next)
 })
 
+// GET register page
+router.get('/register', function(req, res, next) {
+  if (!req.user) {
+    res.render('Authentication/register', {
+      title: 'Register',
+      message: req.flash('registerMessage'),
+      displayName: req.user ? req.user.displayName : ''
+    });
+  } else {
+    return res.redirect('/');
+  }
+})
 
 // POST register page
 router.post('/register', function(req, res, next) {
@@ -79,6 +91,7 @@ router.post('/register', function(req, res, next) {
     }
   });
 })
+
 
 
 router.get("/logout", (req,res,next)=>{
