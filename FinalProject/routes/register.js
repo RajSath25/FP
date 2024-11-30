@@ -10,7 +10,7 @@ router.get('/register', (req, res) => {
 router.post('/register', (req, res) => {
   const { username, password } = req.body;
 
-  res.redirect('/login');
+  res.redirect('/register');
 });
 
 module.exports = router;
