@@ -1,10 +1,13 @@
-.logo {
-    width:15%
-}
+
 body {
+    background-image: linear-gradient(135deg, #1c1c1c, #3498db);
     margin: 0;
     font-family: Arial, sans-serif;
     color: #333;
+}
+
+.main{
+    flex-grow: 1;
 }
 
 .navbar {
@@ -38,20 +41,18 @@ body {
     transition: color 0.3s;
 }
 
-.nav-link:hover {
-    color: #3498db;
-}
 
 .hero-section {
-    background: linear-gradient(135deg, #1c1c1c, #3498db);
+    background-image: linear-gradient(135deg, #1c1c1c, #3498db);
     color: white;
     text-align: center;
     padding: 5rem 2rem;
+    height: 600px;
 }
 
 .hero-content h1 {
     font-size: 2.5rem;
-    margin-bottom: 1rem;
+    margin-top: 7%;
 }
 
 .hero-content p {
@@ -82,83 +83,18 @@ body {
     font-size: 0.9rem;
 }
 
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    color: #333;
+.text-center{
+    color:white;
 }
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #1c1c1c;
-    padding: 1rem 2rem;
+
+.container{
     color: white;
 }
 
-.navbar .logo {
-    display: flex;
-    align-items: center;
+tr:nth-child(even) {
+    background-color: aqua;
 }
 
-.logo-img {
-    height: 40px;
-    margin-right: 10px;
+tr:nth-child(odd) {
+    background-color: bisque;
 }
-
-.nav-links {
-    display: flex;
-    gap: 1.5rem;
-}
-
-.nav-link {
-    text-decoration: none;
-    color: white;
-    font-size: 1rem;
-    transition: color 0.3s;
-}
-
-.nav-link:hover {
-    color: #3498db;
-}
-
-.hero-section {
-    background: linear-gradient(135deg, #1c1c1c, #3498db);
-    color: white;
-    text-align: center;
-    padding: 5rem 2rem;
-}
-
-.hero-content h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-}
-
-.hero-content p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-}
-
-.cta-button {
-    background-color: #3498db;
-    border: none;
-    color: white;
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.cta-button:hover {
-    background-color: #2874a6;
-}
-
-.footer {
-    background-color: #1c1c1c;
-    color: white;
-    text-align: center;
-    padding: 1rem 0;
-    font-size: 0.9rem;
-}
-

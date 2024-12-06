@@ -25,7 +25,7 @@ let cipherRouter = require("../routes/cipher");
 let registerRouter = require('../routes/register')
 
 let app = express();
-//let cors = require("cors");
+let cors = require("cors");
 let UserModel = require("../model/userModel");
 let User = UserModel.User;
 let session = require("express-session");
